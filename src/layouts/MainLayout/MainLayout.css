@@ -1,0 +1,30 @@
+.app_body {
+    display: flex;
+    position: relative;
+    width: 100dvw;
+    height: 100dvh;
+    min-width: 20rem;
+    min-height: 40rem;
+    padding: 1rem;
+    overflow: hidden;
+}
+
+.app_sidebar {
+    display: flex;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.app_main {
+    display: flex;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+@media only screen and (max-width: 600px) {
+    .app_body {
+        padding: 0;
+    }
+}

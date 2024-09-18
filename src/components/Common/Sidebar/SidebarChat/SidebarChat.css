@@ -1,0 +1,75 @@
+.sidebar_chat {
+    display: flex;
+    flex-direction: row;
+    flex-shrink: 0;
+    align-items: center;
+    width: 100%;
+    height: 4rem;
+    padding: 0 0.75rem;
+    border-bottom: 1px solid #D3D3D3;
+    gap: 0.5rem;
+}
+
+.sidebar_chat:hover,
+.sidebar_chat.active {
+    cursor: pointer;
+    background-color: lightblue;
+}
+
+.sidebar_chat_contents {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    margin-left: 0.5rem;
+    color: #000000;
+}
+
+.sidebar_chat_name {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.sidebar_chat_message {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    padding-right: 2rem;
+}
+
+.sidebar_chat_message #seen_user {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.1rem;
+    height: 1.1rem;
+    margin-left: auto;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.sidebar_chat_message #seen_user img {
+    width: 100%;
+    height: 100%;
+}
+
+.sidebar_chat_metadata {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 1.75rem;
+    height: 100%;
+}
+
+.sidebar_chat_metadata span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 1.75rem;
+    border-radius: 0 0 0.25rem 0.25rem;
+    font-size: 11px;
+    font-family: 'Times New Roman';
+    background-color: blue;
+}

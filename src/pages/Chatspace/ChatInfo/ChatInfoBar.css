@@ -1,0 +1,133 @@
+.chat_infobar {
+    display: flex;
+    flex-direction: column;
+    color: #000;
+    background-color: #FFF;
+    overflow-y: auto;
+    transition: 0.25s ease-in-out;
+}
+
+.chat_infobar_header {
+    display: flex;
+    width: 100%;
+    height: 4rem;
+    padding: 0 0.5rem;
+    background-color: #FFFFFF;
+    user-select: none;
+}
+
+.chat_infobar_header #close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 6rem;
+    height: 100%;
+}
+
+.chat_infobar_header #type {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    font-size: 18px;
+}
+
+.chat_infobar_profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.chat_infobar_profile_image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: fit-content;
+    margin: 1.5rem 0 1rem 0;
+    user-select: none;
+    ;
+}
+
+.chat_infobar_profile_image>img {
+    width: 12.5rem;
+    height: 12.5rem;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2),
+        -5px -5px 10px rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+}
+
+.chat_infobar_profile_contents {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.chat_infobar_profile_contents>h3 {
+    font-weight: bold;
+}
+
+.chat_infobar_profile_contents>span {
+    font-size: 18px;
+}
+
+.chat_infobar_option {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 3rem;
+    padding: 0 1rem;
+    font-size: 17px;
+    user-select: none;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+    background-color: cyan;
+}
+
+.chat_infobar_option:hover {
+    background-color: #D3D3D3;
+}
+
+.chat_infobar_option#delete {
+    color: #F05D6D;
+}
+
+.chat_infobar_option #icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    height: 100%;
+    padding: 0 1.2rem;
+}
+
+.close_icon {
+    --size: 16px;
+}
+
+.close_icon {
+    position: relative;
+    width: var(--size);
+    height: var(--size);
+    cursor: pointer;
+}
+
+.close_icon::before,
+.close_icon::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: calc(var(--size) / 10);
+    height: 100%;
+    background-color: black;
+    transform: translateX(-50%) rotate(45deg);
+}
+
+.close_icon::after {
+    transform: translateX(-50%) rotate(-45deg);
+}

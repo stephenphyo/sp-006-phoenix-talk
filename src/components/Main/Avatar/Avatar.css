@@ -1,0 +1,37 @@
+.avatar {
+    display: inline-block;
+    position: relative;
+}
+
+.avatar img {
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.avatar span {
+    position: absolute;
+    top: calc(var(--size)* 0.05);
+    right: calc(var(--size)* 0.05);
+    width: calc(var(--size)* 0.22);
+    height: calc(var(--size)* 0.22);
+    border: 2px solid #696969;
+    border-radius: 50%;
+}
+
+.avatar #online {
+    background-color: #00FF00;
+}
+
+.avatar #offline {
+    background-color: #808080;
+}
+
+.avatar #idle {
+    background-color: #FFA500;
+}
+
+.avatar #dnd {
+    background-color: #FF0000;
+}

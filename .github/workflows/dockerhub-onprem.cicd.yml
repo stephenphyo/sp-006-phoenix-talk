@@ -1,0 +1,60 @@
+name: CI Pipeline for ASP.NET API Application using Dockerhub
+
+on:
+  push:
+    branches: ["sp-006-frontend"]
+    tags:
+      - "v*.*.*"
+  pull_request:
+    branches: ["sp-006-frontend"]
+
+jobs:
+  build:
+    if: github.ref_type == 'tag'
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Checkout
+        id: vars
+        run: |
+          tag=${GITHUB_REF#refs/*/}
+          tag=${tag%% *}
+          echo "tag=$tag" >> $GITHUB_OUTPUT
+
+      - name: Setup Git Config
+        run: |
+          git config user.name "Stephen Phyo"
+          git config user.email "stephenphyo2019.official@gmail.com"
+
+      - name: Save Version
+        id: version
+        run: echo ::set-output name=tag
+
+      - name: Login to DockerHub Registry
+        uses: docker/login-action@v1
+        with:
+          username: ${{  secrets.DOCKERHUB_USERNAME }}
+          password: ${{  secrets.DOCKERHUB_PASSWORD }}
+
+      - name: Build & Push to Docker Hub Repository
+        run: |
+          docker build -t ${{  secrets.DOCKERHUB_USERNAME }}/sp-006-phoenix-talk-frontend:${{ steps.vars.outputs.tag }} -f Dockerfile.prod .
+          docker push ${{  secrets.DOCKERHUB_USERNAME }}/sp-006-phoenix-talk-frontend:latest
+
+  deploy:
+    name: Deploy to Production Environment
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Pull Docker Image, Replace & Restart Container
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.DEPLOYMENT_SERVER_HOSTNAME }}
+          username: ${{ secrets.DEPLOYMENT_SERVER_USERNAME }}
+          password: ${{ secrets.DEPLOYMENT_SERVER_PASSWORD }}
+          script: |
+            docker image pull --platform linux/x86_64 docker.io/stephenphyo/sp-006-phoenix-talk-frontend
+            docker stop sp-006-phoenix-talk-frontend || true
+            docker rm sp-006-phoenix-talk-frontend || true
+            docker run -d --name sp-006-phoenix-talk-frontend --restart unless-stopped -p 3006:80 -p 3506:443 --platform linux/arm64 docker.io/stephenphyo/sp-006-phoenix-talk-frontend

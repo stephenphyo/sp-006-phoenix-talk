@@ -1,0 +1,37 @@
+.context_menu {
+    --padding: 0.5rem;
+    --border-radius: 0.3rem;
+
+    display: flex;
+    padding: var(--padding);
+    border-radius: var(--border-radius);
+    background-color: #FFFFFF;
+}
+
+.context_menu_option {
+    --padding: 0.25rem 0.75rem;
+    --border-radius: 0.3rem;
+    --icon-margin: 1.25rem;
+    --icon-size: 1.25rem;
+
+    display: flex;
+    position: relative;
+    align-items: center;
+    text-align: start;
+    text-transform: none;
+    width: 7.5rem;
+    height: 2rem;
+    padding: var(--padding);
+    color: #000000;
+    border-radius: var(--border-radius);
+    font-size: 14px;
+    font-weight: 500;
+    transform: scale(1);
+    cursor: pointer !important;
+    pointer-events: all !important;
+}
+
+.context_menu_option:hover {
+    color: #000000;
+    background-color: #F3F3F3;
+}
