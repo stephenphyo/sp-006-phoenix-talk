@@ -54,7 +54,7 @@ jobs:
           username: ${{ secrets.DEPLOYMENT_SERVER_USERNAME }}
           password: ${{ secrets.DEPLOYMENT_SERVER_PASSWORD }}
           script: |
-            docker image pull --platform linux/x86_64 docker.io/stephenphyo/sp-006-phoenix-talk-frontend
+            docker image pull --platform linux/x86_64 docker.io/stephenphyo/sp-006-phoenix-talk-frontend:${{ needs.build.outputs.tag }}
             docker stop sp-006-phoenix-talk-frontend || true
             docker rm sp-006-phoenix-talk-frontend || true
-            docker run -d --name sp-006-phoenix-talk-frontend --restart unless-stopped -p 3006:80 -p 3506:443 --platform linux/arm64 docker.io/stephenphyo/sp-006-phoenix-talk-frontend
+            docker run -d --name sp-006-phoenix-talk-frontend --restart unless-stopped -p 3006:80 -p 3506:443 --platform linux/arm64 docker.io/stephenphyo/sp-006-phoenix-talk-frontend:${{ needs.build.outputs.tag }}
