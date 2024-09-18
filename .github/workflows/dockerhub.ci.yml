@@ -18,9 +18,10 @@ jobs:
       - name: Checkout
         id: vars
         run: |
-          tag=${GITHUB_REF#refs/*/}
-          tag=${tag%% *}
-          echo "tag=$tag" >> $GITHUB_OUTPUT
+          echo "GITHUB_REF is: $GITHUB_REF"
+           tag=${GITHUB_REF#refs/*/}
+           tag=${tag%% *}
+           echo "tag=$tag" >> $GITHUB_OUTPUT
 
       - name: Setup Git Config
         run: |
