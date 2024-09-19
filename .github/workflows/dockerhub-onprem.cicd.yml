@@ -39,7 +39,7 @@ jobs:
 
       - name: Build & Push to Docker Hub Repository
         run: |
-          docker build -t ${{  secrets.DOCKERHUB_USERNAME }}/sp-006-phoenix-talk-frontend:latest -f Dockerfile.prod .
+          docker build -t ${{  secrets.DOCKERHUB_USERNAME }}/sp-006-phoenix-talk-frontend:latest -f Dockerfile.prod.arm64 .
           docker push ${{  secrets.DOCKERHUB_USERNAME }}/sp-006-phoenix-talk-frontend:latest
 
   deploy:
